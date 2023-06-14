@@ -30,11 +30,10 @@ router.get('/:id', middleware.validateUserId, (req, res,next) => {
     }
 });
 
-router.post('/', middleware.validatePost, async (req, res,next) => {
+router.post('/', middleware.validateUser, async (req, res,next) => {
     try {
       const insertedUser = await userModel.insert({name: req.body.name});
       res.status(201).json(insertedUser);
-    
     } catch (error) {
       next(error);
     // YENİ OLUŞTURULAN USER NESNESİNİ DÖNDÜRÜN
